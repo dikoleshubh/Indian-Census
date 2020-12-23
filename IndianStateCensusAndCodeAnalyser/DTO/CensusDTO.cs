@@ -4,7 +4,11 @@ namespace IndianStateCensusAndCodeAnalyser.POCO
 {
     public class CensusDTO
     {
+        public int serialNumber;
+        public string stateName;
         public string state;
+        public int tin;
+        public string stateCode;
         public long population;
         public long area;
         public long density;
@@ -13,6 +17,14 @@ namespace IndianStateCensusAndCodeAnalyser.POCO
         public double waterArea;
         public double landArea;
         public double housingDensity;
+
+        public CensusDTO(StateCodeDAO stateCodeDAO)
+        {
+            this.serialNumber = stateCodeDAO.serialNumber;
+            this.stateName = stateCodeDAO.stateName;
+            this.tin = stateCodeDAO.tin;
+            this.stateCode = stateCodeDAO.stateCode;
+        }
 
         public CensusDTO(CensusDataDAO censusDataDAO)
         {
