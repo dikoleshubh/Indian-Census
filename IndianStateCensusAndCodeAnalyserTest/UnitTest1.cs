@@ -10,6 +10,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         static string indianStateCensusHeader = "State,Population,AreaInSqKm,DensityPerSqKm";
         static string indianStateCesusFilePath = @"C:\Users\HP\source\repos\IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyserTest\CSVFiles\IndianStateCensusData.csv";
         static string WrongIndianStateCesusFilePath = @"C:\Users\HP\source\repos\CensusAnalyserProblemDemo\NUnitTestProject1\CSVFiles\WrongIndianStateCensus.csv";
+        static string WrongIndianStateCesusFileTypePath = @"C:\Users\HP\source\repos\IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyserTest\CSVFiles\IndianStateCensusData.txt";
 
         IndianStateCensusAndCodeAnalyser.CensusAnalyser censusAnalyser;
         Dictionary<string, CensusDTO> totalRecords;
@@ -38,6 +39,16 @@ namespace IndianStateCensusAndCodeAnalyserTest
         {
             var censusException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(Country.INDIA, WrongIndianStateCesusFilePath, indianStateCensusHeader));
             Assert.AreEqual(CensusAnalyserException.ExceptionType.FILE_NOT_FOUND, censusException.eType);
+        }
+
+        /// <summary>
+        /// Given Wrong Indian Census Data File Type Should Return Custom Exception as INVALID_FILE_TYPE
+        /// </summary>
+        [Test]
+        public void GivenWrongIndianCensusDataFileType_WhenRead_ShouldReturnCustomException()
+        {
+            var censusException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(Country.INDIA, WrongIndianStateCesusFileTypePath, indianStateCensusHeader));
+            Assert.AreEqual(CensusAnalyserException.ExceptionType.INVALID_FILE_TYPE, censusException.eType);
         }
     }
 }
