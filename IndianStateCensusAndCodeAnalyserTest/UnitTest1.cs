@@ -15,6 +15,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         static string IndianStateCesusFilePathWithWrongDelimeter = @"C:\Users\HP\source\repos\IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyserTest\CSVFiles\IndianStateCensusDataWithWrongDelimeter.csv";
         static string IndianStateCesusFilePathWithWrongHeader = @"C:\Users\HP\source\repos\IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyserTest\CSVFiles\WrongHeaderInIndiaStateCensusData.csv";
         static string indianStateCodePath = @"C:\Users\HP\source\repos\IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyserTest\CSVFiles\IndianStateCode.csv";
+        static string WrongIndianStateCodeFilePath = @"C:\Users\HP\source\repos\CensusAnalyserProblemDemo\NUnitTestProject1\CSVFiles\WrongStateCode.csv";
 
         IndianStateCensusAndCodeAnalyser.CensusAnalyser censusAnalyser;
         Dictionary<string, CensusDTO> totalRecords;
@@ -86,6 +87,16 @@ namespace IndianStateCensusAndCodeAnalyserTest
         {
             stateRecords = censusAnalyser.LoadCensusData(Country.INDIA, indianStateCodePath, indianStateCodeHeaders);
             Assert.AreEqual(17, stateRecords.Count);
+        }
+
+        /// <summary>
+        /// Given Wrong State Code File Should Return Custom Exception as FILE_NOT_FOUND
+        /// </summary>
+        [Test]
+        public void GivenWrongStateCodeFile_WhenRead_ShouldReturnCustomException()
+        {
+            var stateException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(Country.INDIA, WrongIndianStateCodeFilePath, indianStateCodeHeaders));
+            Assert.AreEqual(CensusAnalyserException.ExceptionType.FILE_NOT_FOUND, stateException.eType);
         }
     }
 }
