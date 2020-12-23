@@ -16,6 +16,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         static string IndianStateCesusFilePathWithWrongHeader = @"C:\Users\HP\source\repos\IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyserTest\CSVFiles\WrongHeaderInIndiaStateCensusData.csv";
         static string indianStateCodePath = @"C:\Users\HP\source\repos\IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyserTest\CSVFiles\IndianStateCode.csv";
         static string WrongIndianStateCodeFilePath = @"C:\Users\HP\source\repos\CensusAnalyserProblemDemo\NUnitTestProject1\CSVFiles\WrongStateCode.csv";
+        static string WrongIndianStateCodeFileTypePath = @"C:\Users\HP\source\repos\IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyserTest\CSVFiles\IndianStateCode.txt";
 
         IndianStateCensusAndCodeAnalyser.CensusAnalyser censusAnalyser;
         Dictionary<string, CensusDTO> totalRecords;
@@ -30,7 +31,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         }
 
         /// <summary>
-        ///  Given Indian Census Data File, Should Return Census Data Count
+        ///  TC1.1 - Given Indian Census Data File, Should Return Census Data Count
         /// </summary>
         [Test]
         public void GivenIndianCensusDataFile_WhenRead_ShouldReturnCensusDataCount()
@@ -40,7 +41,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         }
 
         /// <summary>
-        /// Given Wrong Indian Census Data File Path Should Return Custom Exception as FILE_NOT_FOUND
+        /// TC1.2 - Given Wrong Indian Census Data File Path Should Return Custom Exception as FILE_NOT_FOUND
         /// </summary>
         [Test]
         public void GivenWrongIndianCensusDataFile_WhenRead_ShouldReturnCustomException()
@@ -50,7 +51,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         }
 
         /// <summary>
-        /// Given Wrong Indian Census Data File Type Should Return Custom Exception as INVALID_FILE_TYPE
+        /// TC1.3 - Given Wrong Indian Census Data File Type Should Return Custom Exception as INVALID_FILE_TYPE
         /// </summary>
         [Test]
         public void GivenWrongIndianCensusDataFileType_WhenRead_ShouldReturnCustomException()
@@ -60,7 +61,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         }
 
         /// <summary>
-        /// Given Indian Census Data File When Wrong Delimeter is givnen, Should Return Custom Exception as INCORRECT_DELIMITER
+        /// TC1.4 - Given Indian Census Data File When Wrong Delimeter is givnen, Should Return Custom Exception as INCORRECT_DELIMITER
         /// </summary>
         [Test]
         public void GivenIndianCensusDataFile_WhenWrongDelimeter_ShouldReturnCustomException()
@@ -70,7 +71,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         }
 
         /// <summary>
-        /// Given Indian Census Data File When Wrong Header is given,Should Return Custom Exception as INCORRECT_HEADER
+        /// TC1.5 - Given Indian Census Data File When Wrong Header is given,Should Return Custom Exception as INCORRECT_HEADER
         /// </summary>
         [Test]
         public void GivenIndianCensusDataFile_WhenWrongHeader_ShouldReturnCustomException()
@@ -80,7 +81,7 @@ namespace IndianStateCensusAndCodeAnalyserTest
         }
 
         /// <summary>
-        /// Given Indian State Code File Should Return Code Data Count
+        /// TC2.1 - Given Indian State Code File Should Return Code Data Count
         /// </summary>
         [Test]
         public void GivenIndianStateCodeFile_WhenRead_ShouldReturnCensusDataCount()
@@ -90,13 +91,23 @@ namespace IndianStateCensusAndCodeAnalyserTest
         }
 
         /// <summary>
-        /// Given Wrong State Code File Should Return Custom Exception as FILE_NOT_FOUND
+        /// TC2.2 - Given Wrong State Code File Should Return Custom Exception as FILE_NOT_FOUND
         /// </summary>
         [Test]
         public void GivenWrongStateCodeFile_WhenRead_ShouldReturnCustomException()
         {
             var stateException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(Country.INDIA, WrongIndianStateCodeFilePath, indianStateCodeHeaders));
             Assert.AreEqual(CensusAnalyserException.ExceptionType.FILE_NOT_FOUND, stateException.eType);
+        }
+
+        /// <summary>
+        /// TC2.3 -Given Indian State Code File when Fily Type is  Wrong, Should Return Custom Exception as INVALID_FILE_TYPE
+        /// </summary>
+        [Test]
+        public void GivenWrongIndianStateCodeFileType_WhenRead_ShouldReturnCustomException()
+        {
+            var stateException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(Country.INDIA, WrongIndianStateCodeFileTypePath, indianStateCodeHeaders));
+            Assert.AreEqual(CensusAnalyserException.ExceptionType.INVALID_FILE_TYPE, stateException.eType);
         }
     }
 }
