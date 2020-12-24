@@ -11,7 +11,7 @@ namespace IndianStateCensusAndCodeAnalyser
             switch (country)
             {
                 case (CensusAnalyser.Country.INDIA):
-                    return new IndianCensusAdapter().LoadCensusData(csvfilePath, dataHeaders);
+                    return new IndianCensus().LoadCensusData(csvfilePath, dataHeaders);
                 default:
                     throw new CensusAnalyserException("No Such Country", CensusAnalyserException.ExceptionType.NO_SUCH_COUNTTY);
             }

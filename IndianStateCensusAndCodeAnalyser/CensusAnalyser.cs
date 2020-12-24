@@ -8,7 +8,7 @@ namespace IndianStateCensusAndCodeAnalyser
     {
         public enum Country
         {
-            INDIA, US, BRAZIL
+            INDIA, US, FIJI
         }
         Dictionary<string, CensusDTO> dataMap;
         public Dictionary<string, CensusDTO> LoadCensusData(Country country, string csvfilePath, string dataHeaders)
