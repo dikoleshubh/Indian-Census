@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndianStateCensusAndCodeAnalyser", "IndianStateCensusAndCodeAnalyser\IndianStateCensusAndCodeAnalyser.csproj", "{595219B0-6756-496B-AB1B-7A0CD8DE49EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndianStateCensusAndCodeAnalyserTest", "IndianStateCensusAndCodeAnalyserTest\IndianStateCensusAndCodeAnalyserTest.csproj", "{1AAC0A63-BDD5-452F-A781-EA9AD8C94CF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndianStateCensusAndCodeAnalyserTest", "IndianStateCensusAndCodeAnalyserTest\IndianStateCensusAndCodeAnalyserTest.csproj", "{1AAC0A63-BDD5-452F-A781-EA9AD8C94CF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
