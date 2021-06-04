@@ -6,7 +6,7 @@ namespace IndianStateCensusAndCodeAnalyser
 {
     public abstract class CensusAdapter
     {
-        protected string[] GetCensusData(string csvfilePath, string dataHeaders) //Accesing the data
+        protected string[] GetCensusData(string csvfilePath, string dataHeaders)
         {
             string[] censusData;
             if (!File.Exists(csvfilePath))

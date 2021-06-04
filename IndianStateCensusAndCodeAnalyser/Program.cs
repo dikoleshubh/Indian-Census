@@ -6,7 +6,7 @@ namespace IndianStateCensusAndCodeAnalyser
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("****Welcome to Indian State Census Analyser****");
+            Console.WriteLine("***Welcome to Indian State Census Analyser****");
         }
     }
 }
